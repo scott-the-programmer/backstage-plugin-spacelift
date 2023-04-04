@@ -21,7 +21,7 @@ yarn add @scott-the-programmer/backstage-plugin-spacelift @scott-the-programmer/
 
 ### Backend
 
-Create thw following file under `packages/backend/src/plugins/spacelift.ts
+Create thw following file under `packages/backend/src/plugins/spacelift.ts`
 
 ```typescript
 import { createRouter } from '@scott-the-programmer/backstage-plugin-spacelift-backend';

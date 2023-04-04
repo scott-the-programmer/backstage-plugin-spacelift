@@ -1,0 +1,17 @@
+{
+  "extends": "@backstage/cli/config/tsconfig.json",
+  "include": [
+    "spacelift/src",
+    "spacelift-plugins/dev",
+    "spacelift/migrations",
+    "spacelift-backend/src",
+    "spacelift-backend/dev",
+    "spacelift-backend/migrations"
+  ],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "outDir": "dist-types",
+    "rootDir": ".",
+    "useUnknownInCatchVariables": false
+  }
+}

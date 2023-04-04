@@ -1,0 +1,53 @@
+name: Publish Backstage plugins to npm
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@scott-the-programmer'
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Tests
+        run: CI=true yarn test:all
+
+      - name: Build plugins
+        run: yarn tsc && yarn build
+
+      - name: Publish frontend
+        run: |
+          cd spacelift
+          yarn tsc
+          yarn build
+          yarn publish --access public || true
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish backend
+        run: |
+          cd spacelift-backend
+          yarn tsc
+          yarn build
+          yarn publish --access public || true
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

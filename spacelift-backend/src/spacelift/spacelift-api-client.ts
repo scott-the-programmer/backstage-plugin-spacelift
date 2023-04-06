@@ -43,7 +43,7 @@ class SpaceliftApiClient {
   }
 
   async getApiToken(): Promise<string> {
-    if (!this.apiToken || (await this.isTokenExpired(this.apiToken))) {
+    if (!this.apiToken || (this.isTokenExpired(this.apiToken))) {
       this.apiToken = await this.getSpaceliftToken();
     }
     return this.apiToken;
@@ -62,7 +62,7 @@ class SpaceliftApiClient {
     );
   }
 
-  async isTokenExpired(token: string): Promise<boolean> {
+  isTokenExpired(token: string): boolean {
     try {
       const decoded = jwt.decode(token, { complete: true, json: true });
       if (decoded && decoded.payload && this.isJwtPayload(decoded.payload)) {
@@ -75,6 +75,7 @@ class SpaceliftApiClient {
       throw error;
     }
   }
+
   async fetchRuns(stackId: string) {
     const apiToken = await this.getApiToken();
 

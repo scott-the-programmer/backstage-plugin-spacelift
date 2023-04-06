@@ -25,6 +25,9 @@ jobs:
       - name: Install dependencies
         run: make install
 
+      - name: Lint
+        run: make lint
+
       - name: Tests
         run: make test
 
@@ -41,9 +44,8 @@ jobs:
 
       - name: Publish backend
         run: |
+          make build-backend
           cd spacelift-backend
-          yarn tsc
-          yarn build
           yarn publish --access public || true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

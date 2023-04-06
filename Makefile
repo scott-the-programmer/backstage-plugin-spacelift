@@ -1,28 +1,39 @@
-.PHONY: install-frontend
+.PHONY: install-frontend install-backend lint-frontend lint-backend fix-frontend fix-backend \
+        build-frontend build-backend test-frontend test-backend \
+        install lint lint-fix build test
+
 install-frontend:
 	@cd spacelift && yarn
 
-.PHONY: install-backend
 install-backend:
 	@cd spacelift-backend && yarn
 
-.PHONY: build-frontend
+lint-frontend:
+	@cd spacelift && yarn prettier:check
+
+lint-backend:
+	@cd spacelift-backend && yarn prettier:check
+
+fix-frontend:
+	@cd spacelift && yarn prettier:fix
+
+fix-backend:
+	@cd spacelift-backend && yarn prettier:fix
+
 build-frontend:
 	@cd spacelift && yarn tsc && yarn build
 
-.PHONY: build-backend
 build-backend:
 	@cd spacelift-backend && yarn tsc && yarn build
 
-.PHONY: test-frontend
 test-frontend:
-	@cd spacelift&& CI=true yarn test
+	@cd spacelift && CI=true yarn test
 
-.PHONY: test-backend
 test-backend:
 	@cd spacelift-backend && CI=true yarn test
 
-.PHONY: install build test
 install: install-frontend install-backend
+lint: lint-frontend lint-backend
+lint-fix: fix-frontend fix-backend
 build: build-frontend build-backend
 test: test-frontend test-backend

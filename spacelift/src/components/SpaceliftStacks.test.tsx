@@ -15,8 +15,8 @@ const mockSpaceliftApi: jest.Mocked<SpaceliftApi> = {
 
 const apiRegistry = TestApiRegistry.from([spaceliftApiRef, mockSpaceliftApi]);
 
-const Wrapper: React.FC = ({ children }) => (
-  <ApiProvider apis={apiRegistry}>{children}</ApiProvider>
+const Wrapper: React.FC = ({}) => (
+  <ApiProvider apis={apiRegistry}>{}</ApiProvider>
 );
 
 describe('Spacelift Stacks', () => {

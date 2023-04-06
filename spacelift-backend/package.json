@@ -23,7 +23,9 @@
     "test": "backstage-cli package test",
     "clean": "backstage-cli package clean",
     "prepack": "backstage-cli package prepack",
-    "postpack": "backstage-cli package postpack"
+    "postpack": "backstage-cli package postpack",
+    "prettier:check": "prettier --check .",
+    "prettier:fix": "prettier --write ."
   },
   "dependencies": {
     "@backstage/backend-common": "^0.18.3",
@@ -41,8 +43,29 @@
   "devDependencies": {
     "@backstage/cli": "^0.22.5",
     "@types/supertest": "^2.0.8",
+    "@spotify/prettier-config": "^14.0.0",
+    "prettier": "^2.2.1",
     "msw": "^1.0.0",
     "supertest": "^6.2.4"
+  },
+  "prettier": "@spotify/prettier-config",
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,mjs,cjs}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ],
+    "*.md": [
+      "node ./scripts/check-docs-quality"
+    ],
+    "./yarn.lock": [
+      "node ./scripts/verify-lockfile-duplicates --fix"
+    ],
+    "*/yarn.lock": [
+      "node ./scripts/verify-lockfile-duplicates --fix"
+    ]
   },
   "files": [
     "dist"

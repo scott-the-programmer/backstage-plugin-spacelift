@@ -3,6 +3,7 @@
         install lint lint-fix build test
 
 install: install-frontend install-backend
+run: run-frontend run-backend
 lint: lint-frontend lint-backend
 lint-fix: fix-frontend fix-backend
 build: build-frontend build-backend
@@ -31,6 +32,12 @@ build-frontend:
 
 build-backend:
 	@cd spacelift-backend && yarn tsc && yarn build
+
+run-frontend:
+	@cd spacelift && yarn start
+
+run-backend:
+	@cd spacelift-backend && yarn start
 
 test-frontend:
 	@cd spacelift && CI=true yarn test

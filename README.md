@@ -21,7 +21,7 @@ yarn add @scott-the-programmer/backstage-plugin-spacelift @scott-the-programmer/
 
 ### Backend
 
-Create thw following file under `packages/backend/src/plugins/spacelift.ts`
+Create the following file under `packages/backend/src/plugins/spacelift.ts`
 
 ```typescript
 import { createRouter } from '@scott-the-programmer/backstage-plugin-spacelift-backend';
@@ -40,11 +40,8 @@ Add the following snippets to `packages/backend/src/index.ts`
 
 ```typescript
 import spacelift from './plugins/spacelift';
-
 ...
-
 const spaceliftEnv = useHotMemoize(module, () => createEnv('spacelift'));
-
 ...
   apiRouter.use('/spacelift', await spacelift(spaceliftEnv));
 ```
@@ -56,8 +53,7 @@ Add the following snippets to packages/app/src/App.tsx
 ```tsx
 import { SpaceliftPage } from '@scott-the-programmer/backstage-plugin-spacelift';
 ...
-
-    <Route path="/spacelift" element={<SpaceliftPage />} />
+<Route path="/spacelift" element={<SpaceliftPage />} />
 ```
 
 Add the following snippets to Root.tsx to add spacelift to the home sidebar

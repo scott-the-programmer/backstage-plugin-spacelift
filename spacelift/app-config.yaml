@@ -20,8 +20,3 @@ backend:
   reading:
     allow:
       - host: localhost
-
-spacelift:
-  org: your-spacelift-org
-  id: your-spacelift-id
-  secret: your-spacelift-secret

@@ -1,0 +1,23 @@
+backend:
+  baseUrl: http://localhost:7007
+  listen:
+    port: 7007
+  database:
+    client: better-sqlite3
+    connection: ':memory:'
+  cache:
+    store: memory
+  cors:
+    origin: http://localhost:3000
+    methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
+    credentials: true
+  csp:
+    connect-src: ["'self'", 'http:', 'https:']
+  reading:
+    allow:
+      - host: localhost
+
+spacelift:
+  org: your-spacelift-org
+  id: your-spacelift-id
+  secret: your-spacelift-secret

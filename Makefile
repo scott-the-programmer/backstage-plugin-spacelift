@@ -8,11 +8,11 @@ install-backend:
 
 .PHONY: build-frontend
 build-frontend:
-	@cd spacelift && yarn build
+	@cd spacelift && yarn tsc && yarn build
 
 .PHONY: build-backend
 build-backend:
-	@cd spacelift-backend && yarn build
+	@cd spacelift-backend && yarn tsc && yarn build
 
 .PHONY: test-frontend
 test-frontend:

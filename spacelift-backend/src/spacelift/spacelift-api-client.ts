@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 import { request, gql } from 'graphql-request';
-import jwt, {JwtPayload} from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 
 class SpaceliftApiClient {
   private apiUrl: string;
@@ -43,7 +43,7 @@ class SpaceliftApiClient {
   }
 
   async getApiToken(): Promise<string> {
-    if (!this.apiToken || (this.isTokenExpired(this.apiToken))) {
+    if (!this.apiToken || this.isTokenExpired(this.apiToken)) {
       this.apiToken = await this.getSpaceliftToken();
     }
     return this.apiToken;

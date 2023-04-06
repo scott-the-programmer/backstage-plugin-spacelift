@@ -96,8 +96,8 @@ export const SpaceliftStacks = () => {
       const response = await spaceliftApi.getProjects();
       const url = await spaceliftApi.getUrl();
       const projectsWithUrls = response.map(project => {
-          return { ...project, url };
-        })
+        return { ...project, url };
+      });
       setProjects(projectsWithUrls);
       setLoading(false);
     }

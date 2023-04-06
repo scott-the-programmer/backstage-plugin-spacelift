@@ -21,7 +21,6 @@ describe('SpaceliftApiClient', () => {
     request.mockReset();
   });
 
-
   test('getSpaceliftToken', async () => {
     const mockJwt = 'test-jwt';
     request.mockResolvedValue({ apiKeyUser: { jwt: mockJwt } });
@@ -54,7 +53,6 @@ describe('SpaceliftApiClient', () => {
     expect(runs).toEqual(mockRuns);
     expect(fetch).toHaveBeenCalledTimes(1);
   });
-
 
   test('fetchStacks', async () => {
     const mockApiToken = 'test-api-token';

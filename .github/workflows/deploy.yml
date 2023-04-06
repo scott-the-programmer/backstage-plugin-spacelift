@@ -23,22 +23,18 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: yarn
-
-      - name: Lint
-        run: yarn lint
+        run: make install
 
       - name: Tests
-        run: CI=true yarn test:all
+        run: make test
 
       - name: Build plugins
-        run: yarn tsc && yarn build
+        run: make build
 
       - name: Publish frontend
         run: |
+          make build-frontend
           cd spacelift
-          yarn tsc
-          yarn build
           yarn publish --access public || true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

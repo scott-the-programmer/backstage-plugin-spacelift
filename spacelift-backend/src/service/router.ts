@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { PluginEnvironment } from '../types';
-import { createSpaceliftRouter } from '../spaceliftApi';
+import { createSpaceliftRouter } from '../spacelift-router';
 
 export async function createRouter(env: PluginEnvironment): Promise<Router> {
   const router = Router();

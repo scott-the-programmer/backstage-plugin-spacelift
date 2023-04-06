@@ -21,9 +21,9 @@ export function createSpaceliftRouter(config: Config): Router {
     }
   });
 
-  router.get('/url', async (_, res) => {
+  router.get('/url', (_, res) => {
     try {
-      const projects = await spaceliftClient.getSpaceliftUrl();
+      const projects = spaceliftClient.getSpaceliftUrl();
       res.send(projects);
     } catch (error) {
       console.log(error);

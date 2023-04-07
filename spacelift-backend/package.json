@@ -16,6 +16,10 @@
   "backstage": {
     "role": "backend-plugin"
   },
+  "files": [
+    "../README.md",
+    "dist"
+  ],
   "scripts": {
     "start": "PLUGIN_CORS=true backstage-cli package start",
     "build": "backstage-cli package build",
@@ -66,8 +70,5 @@
     "*/yarn.lock": [
       "node ./scripts/verify-lockfile-duplicates --fix"
     ]
-  },
-  "files": [
-    "dist"
-  ]
+  }
 }

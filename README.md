@@ -11,9 +11,9 @@ This repository contains two Backstage plugins for integrating with the Spacelif
 - `spacelift`: a plugin that displays a table of all Spacelift stacks and runs
 - `spacelift-api`: a plugin that provides a simple wrapper for the Spacelift API.
 
-![Stacks](./docs/stacks.png)
+![Stacks](https://raw.githubusercontent.com/scott-the-programmer/backstage-plugin-spacelift/main/docs/stacks.png)
 
-![Runs](./docs/runs.png)
+![Runs](https://raw.githubusercontent.com/scott-the-programmer/backstage-plugin-spacelift/main/docs/runs.png)
 
 ## Installation
 

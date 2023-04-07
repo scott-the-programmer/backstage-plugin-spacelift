@@ -1,5 +1,7 @@
 # Spacelift Backstage Plugins
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/65206b49b30dfc4e2312/maintainability)](https://codeclimate.com/github/scott-the-programmer/backstage-plugin-spacelift/maintainability)
+
 backstage-plugin-spacelift: [![npm version](https://badge.fury.io/js/%40scott-the-programmer%2Fbackstage-plugin-spacelift.svg)](https://www.npmjs.com/package/@scott-the-programmer/backstage-plugin-spacelift)
 
 backstage-plugin-spacelift-backend: [![npm version](https://badge.fury.io/js/%40scott-the-programmer%2Fbackstage-plugin-spacelift-backend.svg)](https://www.npmjs.com/package/@scott-the-programmer/backstage-plugin-spacelift-backend)

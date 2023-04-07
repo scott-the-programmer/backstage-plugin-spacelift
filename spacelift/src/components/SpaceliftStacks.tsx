@@ -20,30 +20,72 @@ type ProjectData = {
   url?: string;
 };
 
+const StatusChip = ({ state }: { state: string }) => {
+  const color = getStatusColor(state);
+  return (
+    <Chip
+      label={state}
+      style={{
+        backgroundColor: color,
+      }}
+    />
+  );
+};
+
+const StackLink = ({
+  name,
+  onClick,
+}: {
+  name: string;
+  onClick: () => void;
+}) => (
+  <Link component="button" variant="body2" onClick={onClick}>
+    {name}
+  </Link>
+);
+
+const useFetchProjects = (spaceliftApi: SpaceliftApi) => {
+  const [projects, setProjects] = useState<ProjectData[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    async function fetchProjects() {
+      setLoading(true);
+      const response = await spaceliftApi.getProjects();
+      const url = await spaceliftApi.getUrl();
+      const projectsWithUrls = response.map(project => {
+        return { ...project, url };
+      });
+      setProjects(projectsWithUrls);
+      setLoading(false);
+    }
+
+    fetchProjects();
+  }, [spaceliftApi]);
+
+  return { projects, loading };
+};
+
 export const SpaceliftStacks = () => {
   const spaceliftApi = useApi<SpaceliftApi>(spaceliftApiRef);
-  const [projects, setProjects] = useState<ProjectData[]>([]);
+  const { projects, loading } = useFetchProjects(spaceliftApi);
   const [selectedStack, setSelectedStack] = useState<string | null>(null);
   const [stackUrl, setStackUrl] = useState<string | null>(null);
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(false);
 
   const columns: TableColumn<ProjectData>[] = [
     {
       title: 'Name',
       field: 'name',
       render: (rowData: ProjectData) => (
-        <Link
-          component="button"
-          variant="body2"
+        <StackLink
+          name={rowData.name}
           onClick={() => {
             setSelectedStack(rowData.id);
             setStackUrl(rowData.url || null);
             setDialogOpen(true);
           }}
-        >
-          {rowData.name}
-        </Link>
+        />
       ),
     },
     {
@@ -73,37 +115,13 @@ export const SpaceliftStacks = () => {
         </Link>
       ),
     },
+
     {
       title: 'Status',
       field: 'state',
-      render: (rowData: ProjectData) => {
-        const color = getStatusColor(rowData.state);
-        return (
-          <Chip
-            label={rowData.state}
-            style={{
-              backgroundColor: color,
-            }}
-          />
-        );
-      },
+      render: (rowData: ProjectData) => <StatusChip state={rowData.state} />,
     },
   ];
-
-  useEffect(() => {
-    async function fetchProjects() {
-      setLoading(true);
-      const response = await spaceliftApi.getProjects();
-      const url = await spaceliftApi.getUrl();
-      const projectsWithUrls = response.map(project => {
-        return { ...project, url };
-      });
-      setProjects(projectsWithUrls);
-      setLoading(false);
-    }
-
-    fetchProjects();
-  }, [spaceliftApi]);
 
   return (
     <div>

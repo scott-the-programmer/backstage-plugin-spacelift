@@ -1,6 +1,22 @@
 import fetch from 'node-fetch';
 import { request, gql } from 'graphql-request';
-import jwt, { JwtPayload } from 'jsonwebtoken';
+
+interface SpaceliftTokenCLiams {
+  aud: string[];
+  exp: number;
+  jti: string;
+  iat: number;
+  iss: string;
+  nbf: number;
+  sub: string;
+  adm: boolean;
+  avt: string;
+  cip: string;
+  psa: string;
+  IsMachineUser: boolean;
+  AwaitsEmailConfirmation: boolean;
+  subdomain: string;
+}
 
 class SpaceliftApiClient {
   private apiUrl: string;
@@ -53,26 +69,33 @@ class SpaceliftApiClient {
     this.apiToken = token;
   }
 
-  isJwtPayload(payload: unknown): payload is JwtPayload {
-    return (
-      typeof payload === 'object' &&
-      payload !== null &&
-      'exp' in payload &&
-      typeof (payload as JwtPayload).exp === 'number'
-    );
-  }
-
   isTokenExpired(token: string): boolean {
     try {
-      const decoded = jwt.decode(token, { complete: true, json: true });
-      if (decoded && decoded.payload && this.isJwtPayload(decoded.payload)) {
+      const decoded = this.decodeSpaceliftToken(token)
+      if (decoded) {
         const currentTimestamp = Math.floor(Date.now() / 1000);
-        return currentTimestamp >= decoded.payload.exp!;
+        return currentTimestamp >= decoded.exp;
       }
       return false;
     } catch (error) {
       console.error('Error decoding JWT:', error);
       throw error;
+    }
+  }
+
+  // Spacelift signs their token against a self-signed certificate, 
+  // so we can't verify the integrity. Instead, let's just decode the payload
+  // and check the expiration date ourselves.
+  decodeSpaceliftToken(token: string): SpaceliftTokenCLiams | null {
+    try {
+      const payloadBase64Url = token.split('.')[1];
+      const payloadBase64 = payloadBase64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const payloadJson = Buffer.from(payloadBase64, 'base64').toString('utf8');
+      const claims = <SpaceliftTokenCLiams> JSON.parse(payloadJson);
+      return claims;
+    } catch (error) {
+      console.error('Error decoding JWT payload:', error);
+      return null;
     }
   }
 

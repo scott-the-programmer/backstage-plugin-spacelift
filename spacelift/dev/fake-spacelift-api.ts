@@ -37,7 +37,7 @@ export class FakeSpaceliftApi implements SpaceliftApi {
   }
 
   async getUrl(): Promise<string> {
-    return 'https://domain.spacelift.app.io';
+    return 'https://domain.app.spacelift.io';
   }
 
   async getRuns(stackId: string): Promise<any[]> {

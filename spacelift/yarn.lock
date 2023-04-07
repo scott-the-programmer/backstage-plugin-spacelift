@@ -2549,6 +2549,11 @@
   resolved "https://registry.yarnpkg.com/@spotify/eslint-config-typescript/-/eslint-config-typescript-14.1.6.tgz#dffaf2eeffd0c879605497c3d6ab275d02053db1"
   integrity sha512-7TbP8nywFUMu73nNTv0NzCmmgNFvGWlRMFZ7lCiFS+UOmfyaiYpJXUHLXXmNQ+qB8/PMrtaznvCIYmus9tqI9Q==
 
+"@spotify/prettier-config@^14.0.0":
+  version "14.1.6"
+  resolved "https://registry.yarnpkg.com/@spotify/prettier-config/-/prettier-config-14.1.6.tgz#5fea574e469ff2b87d139be7a27a293119620ac8"
+  integrity sha512-VDojGCGVV9CfCjM7642wWbpbFlMSVPCCCiYUnXNVewD+/l8t62Ypscko60ZJnWQuHu5KL0/hOD1UY8nUpEV70w==
+
 "@sucrase/webpack-loader@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@sucrase/webpack-loader/-/webpack-loader-2.0.0.tgz#b8a70b8d3df3eeb570e6a3315e1a9c6b723e4a37"
@@ -2747,6 +2752,13 @@
   version "0.4.14"
   resolved "https://registry.yarnpkg.com/@swc/helpers/-/helpers-0.4.14.tgz#1352ac6d95e3617ccb7c1498ff019654f1e12a74"
   integrity sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==
+  dependencies:
+    tslib "^2.4.0"
+
+"@swc/helpers@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@swc/helpers/-/helpers-0.5.0.tgz#bf1d807b60f7290d0ec763feea7ccdeda06e85f1"
+  integrity sha512-SjY/p4MmECVVEWspzSRpQEM3sjR17sP8PbGxELWrT+YZMBfiUyt1MRUNjMV23zohwlG2HYtCQOsCwsTHguXkyg==
   dependencies:
     tslib "^2.4.0"
 

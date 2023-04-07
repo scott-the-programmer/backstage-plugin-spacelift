@@ -1,6 +1,6 @@
 import React from 'react';
 import { createDevApp } from '@backstage/dev-utils';
-import { spaceliftApiRef, SpaceliftApiClient } from '../src/api/spaceliftApi';
+import { spaceliftApiRef} from '../src/api/spaceliftApi';
 import { discoveryApiRef, DiscoveryApi } from '@backstage/core-plugin-api';
 import { spaceliftPlugin, SpaceliftPage } from '../src/plugin';
 import { FakeSpaceliftApi } from './fake-spacelift-api';

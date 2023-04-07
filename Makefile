@@ -28,10 +28,10 @@ fix-backend:
 	@cd spacelift-backend && yarn prettier:fix
 
 build-frontend:
-	@cd spacelift && yarn tsc && yarn build
+	@cd spacelift && yarn tsc && yarn build && yarn prepublishOnly
 
 build-backend:
-	@cd spacelift-backend && yarn tsc && yarn build
+	@cd spacelift-backend && yarn tsc && yarn build && yarn prepublishOnly
 
 run-frontend:
 	@cd spacelift && yarn start

@@ -1,5 +1,10 @@
 import React from 'react';
-import { render, waitFor, screen } from '@testing-library/react';
+import {
+  render as rtlRender,
+  waitFor,
+  screen,
+  act,
+} from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { TestApiRegistry } from '@backstage/test-utils';
 import { ApiProvider } from '@backstage/core-app-api';
@@ -15,9 +20,14 @@ const mockSpaceliftApi: jest.Mocked<SpaceliftApi> = {
 
 const apiRegistry = TestApiRegistry.from([spaceliftApiRef, mockSpaceliftApi]);
 
-const Wrapper: React.FC = ({}) => (
-  <ApiProvider apis={apiRegistry}>{}</ApiProvider>
-);
+const Wrapper: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => <ApiProvider apis={apiRegistry}>{children}</ApiProvider>;
+
+const customRender = (ui: React.ReactElement, options?: any) =>
+  rtlRender(ui, { wrapper: Wrapper, ...options });
 
 describe('Spacelift Stacks', () => {
   beforeEach(() => {
@@ -54,9 +64,10 @@ describe('Spacelift Stacks', () => {
 
     mockSpaceliftApi.getProjects.mockResolvedValue(mockProjects);
     mockSpaceliftApi.getUrl.mockResolvedValue(mockUrl);
-    mockSpaceliftApi.getRuns.mockResolvedValue([]);
 
-    render(<SpaceliftStacks />, { wrapper: Wrapper });
+    await act(async () => {
+      customRender(<SpaceliftStacks />);
+    });
 
     await waitFor(() =>
       expect(mockSpaceliftApi.getProjects).toHaveBeenCalledTimes(1),

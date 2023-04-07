@@ -1,6 +1,10 @@
 import React from 'react';
-import { render, waitFor, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import {
+  render as rtlRender,
+  waitFor,
+  screen,
+  act,
+} from '@testing-library/react';
 import { SpaceliftRuns } from './SpaceliftRuns';
 import { TestApiRegistry } from '@backstage/test-utils';
 import { ApiProvider } from '@backstage/core-app-api';
@@ -15,9 +19,14 @@ const mockSpaceliftApi: jest.Mocked<SpaceliftApi> = {
 
 const apiRegistry = TestApiRegistry.from([spaceliftApiRef, mockSpaceliftApi]);
 
-const Wrapper: React.FC = ({}) => (
-  <ApiProvider apis={apiRegistry}>{}</ApiProvider>
-);
+const Wrapper: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => <ApiProvider apis={apiRegistry}>{children}</ApiProvider>;
+
+const customRender = (ui: React.ReactElement, options?: any) =>
+  rtlRender(ui, { wrapper: Wrapper, ...options });
 
 describe('Spacelift Runs', () => {
   beforeEach(() => {
@@ -44,23 +53,24 @@ describe('Spacelift Runs', () => {
 
     mockSpaceliftApi.getRuns.mockResolvedValue(mockRuns);
 
-    render(<SpaceliftRuns stackId="stack" url="url" />, { wrapper: Wrapper });
+    await act(async () => {
+      customRender(<SpaceliftRuns stackId="stack" url="url" />);
+    });
 
     await waitFor(() =>
       expect(mockSpaceliftApi.getRuns).toHaveBeenCalledTimes(1),
     );
 
-    setTimeout(() => {
+    await waitFor(() => {
       expect(screen.getByText('Runs')).toBeInTheDocument();
-      expect(
-        screen.getByText('01GWXM7RTNM3PZZG9BWJ4SADVH'),
-      ).toBeInTheDocument();
       expect(screen.getByText('FINISHED')).toBeInTheDocument();
       expect(
-        screen.getByText('https://github.com/some/project/commit'),
-      ).toBeInTheDocument();
+        screen.getByRole('link', { name: mockRuns[0].commit.hash.slice(0, 7) }),
+      ).toHaveAttribute('href', 'https://github.com/some/project/commit');
       expect(screen.getByText('author')).toBeInTheDocument();
-      expect(screen.getByText('some-commit')).toBeInTheDocument();
-    }, 200);
+      expect(
+        screen.getByRole('link', { name: mockRuns[0].commit.hash.slice(0, 7) }),
+      ).toBeInTheDocument();
+    });
   });
 });

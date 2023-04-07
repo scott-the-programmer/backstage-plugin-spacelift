@@ -71,7 +71,7 @@ class SpaceliftApiClient {
 
   isTokenExpired(token: string): boolean {
     try {
-      const decoded = this.decodeSpaceliftToken(token)
+      const decoded = this.decodeSpaceliftToken(token);
       if (decoded) {
         const currentTimestamp = Math.floor(Date.now() / 1000);
         return currentTimestamp >= decoded.exp;
@@ -83,15 +83,17 @@ class SpaceliftApiClient {
     }
   }
 
-  // Spacelift signs their token against a self-signed certificate, 
+  // Spacelift signs their token against a self-signed certificate,
   // so we can't verify the integrity. Instead, let's just decode the payload
   // and check the expiration date ourselves.
   decodeSpaceliftToken(token: string): SpaceliftTokenCLiams | null {
     try {
       const payloadBase64Url = token.split('.')[1];
-      const payloadBase64 = payloadBase64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const payloadBase64 = payloadBase64Url
+        .replace(/-/g, '+')
+        .replace(/_/g, '/');
       const payloadJson = Buffer.from(payloadBase64, 'base64').toString('utf8');
-      const claims = <SpaceliftTokenCLiams> JSON.parse(payloadJson);
+      const claims = <SpaceliftTokenCLiams>JSON.parse(payloadJson);
       return claims;
     } catch (error) {
       console.error('Error decoding JWT payload:', error);

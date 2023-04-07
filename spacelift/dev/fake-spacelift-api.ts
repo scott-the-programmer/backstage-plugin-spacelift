@@ -40,7 +40,7 @@ export class FakeSpaceliftApi implements SpaceliftApi {
     return 'https://domain.app.spacelift.io';
   }
 
-  async getRuns(stackId: string): Promise<any[]>  {
+  async getRuns(stackId: string): Promise<any[]> {
     const runsData: Record<string, any[]> = {
       '1': [
         {

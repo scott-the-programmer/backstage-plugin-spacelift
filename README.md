@@ -15,7 +15,7 @@ This repository contains two Backstage plugins for integrating with the Spacelif
 
 To use these plugins, you'll first need to install them in your Backstage app.
 
-```bash
+```console
 yarn add @scott-the-programmer/backstage-plugin-spacelift @scott-the-programmer/backstage-plugin-spacelift-backend
 ```
 
@@ -71,4 +71,90 @@ spacelift:
   org: your-spacelift-org
   id: your-spacelift-id
   secret: your-spacelift-secret
+```
+
+## Contributing
+We appreciate your interest in contributing to our project! To ensure a smooth contribution process, please follow the guidelines below.
+
+Please be patient while waiting for your pull request to be reviewed. We'll do our best to provide feedback as soon as possible.
+
+Thank you for contributing!
+
+### Getting Started
+Fork the repository to your own GitHub account.
+
+Clone the forked repository to your local machine:
+
+```console
+git clone https://github.com/<your-username>/project-name.git
+```
+
+Add the original repository as a remote called 'upstream':
+
+```console
+git remote add upstream https://github.com/original-owner/project-name.git
+```
+
+### Installation
+
+Install the frontend dependencies:
+
+```console
+make install-frontend
+```
+Install the backend dependencies:
+
+```console
+make install-backend
+```
+
+### Development
+
+Run the frontend development server:
+
+```console
+make run-frontend
+```
+
+Run the backend development server:
+
+```console
+make run-backend
+```
+
+Testing and Linting
+Run the frontend tests:
+
+```console
+make test-frontend
+```
+
+Run the backend tests:
+
+```console
+make test-backend
+```
+
+Lint the frontend code:
+
+```console
+make lint-frontend
+```
+
+Lint the backend code:
+
+```console
+make lint-backend
+```
+
+Automatically fix linting issues in the frontend code:
+
+```console
+make fix-frontend
+```
+
+Automatically fix linting issues in the backend code:
+
+```console
+make fix-backend
 ```

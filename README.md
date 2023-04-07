@@ -1,5 +1,9 @@
 # Spacelift Backstage Plugins
 
+backstage-plugin-spacelift: [![npm version](https://badge.fury.io/js/%40scott-the-programmer%2Fbackstage-plugin-spacelift.svg)](https://www.npmjs.com/package/@scott-the-programmer/backstage-plugin-spacelift)
+
+backstage-plugin-spacelift-backend: [![npm version](https://badge.fury.io/js/%40scott-the-programmer%2Fbackstage-plugin-spacelift-backend.svg)](https://www.npmjs.com/package/@scott-the-programmer/backstage-plugin-spacelift-backend)
+
 A backstage plugin for spacelift, cobbled together one Sunday afternoon by @scott-the-programmer using ChatGPT
 
 This repository contains two Backstage plugins for integrating with the Spacelift platform:

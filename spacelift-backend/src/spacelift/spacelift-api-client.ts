@@ -116,7 +116,19 @@ class SpaceliftApiClient {
             stack(id: "${stackId}")
             {
               id
-              runs { id,  branch, state, createdAt, commit { url, authorName,timestamp, hash}}
+              runs { 
+                id, 
+                branch, 
+                state, 
+                createdAt, 
+                commit 
+                { 
+                  url, 
+                  authorName,
+                  timestamp, 
+                  hash
+                }
+              }
             }
           }
           `,

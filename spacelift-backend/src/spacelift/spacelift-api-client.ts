@@ -135,7 +135,7 @@ class SpaceliftApiClient {
       }),
     });
 
-    const { data } = await response.json() as any;
+    const { data } = (await response.json()) as any;
     return data.stack.runs;
   }
 
@@ -169,7 +169,7 @@ class SpaceliftApiClient {
       }),
     });
 
-    const { data } = await response.json() as any;
+    const { data } = (await response.json()) as any;
     return data.stacks;
   }
 

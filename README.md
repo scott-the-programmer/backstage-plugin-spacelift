@@ -92,16 +92,16 @@ Fork the repository to your own GitHub account.
 Clone the forked repository to your local machine:
 
 ```console
-git clone https://github.com/<your-username>/project-name.git
+git clone https://github.com/<your-username>/backstage-plugin-spacelift.git
 ```
 
 Add the original repository as a remote called 'upstream':
 
 ```console
-git remote add upstream https://github.com/original-owner/project-name.git
+git remote add upstream https://github.com/scott-the-programmer/backstage-plugin-spacelift.git
 ```
 
-### Installation
+### Install Dependencies
 
 Install the frontend dependencies:
 

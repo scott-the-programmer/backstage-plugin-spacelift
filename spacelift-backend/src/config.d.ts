@@ -17,5 +17,5 @@ export interface Config {
      * @visibility secret
      */
     secret: string;
-  }
+  };
 }

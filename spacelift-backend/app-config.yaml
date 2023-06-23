@@ -1,3 +1,7 @@
+app:
+  title: Spacelift Dev App
+  baseUrl: http://localhost:3000
+
 backend:
   baseUrl: http://localhost:7007
   listen:

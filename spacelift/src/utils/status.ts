@@ -3,12 +3,12 @@ export const getStatusColor = (status: string): string => {
 
   switch (status) {
     case 'FINISHED':
-      backgroundColor = 'green';
+      backgroundColor = '#00d474';
       break;
     case 'FAILED':
     case 'DISCARDED':
     case 'STOPPED':
-      backgroundColor = 'red';
+      backgroundColor = '#fc2c03';
       break;
     case 'NONE':
     case '':
@@ -23,7 +23,7 @@ export const getStatusColor = (status: string): string => {
     case 'PREPARING':
     case 'PREPARING_APPLY':
     default:
-      backgroundColor = 'yellow';
+      backgroundColor = '#fcca03';
       break;
   }
 

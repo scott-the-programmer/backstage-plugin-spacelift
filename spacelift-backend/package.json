@@ -29,7 +29,7 @@
   "configSchema": "src/config.d.ts",
   "scripts": {
     "prepublishOnly": "node ../prepublish.js",
-    "start": "PLUGIN_CORS=true backstage-cli package start",
+    "start": "cross-env PLUGIN_CORS=true backstage-cli package start",
     "build": "backstage-cli package build",
     "lint": "backstage-cli package lint",
     "pretest": "backstage-cli config:check",
@@ -58,6 +58,7 @@
     "@spotify/prettier-config": "^15.0.0",
     "@types/node-fetch": "^2.6.4",
     "@types/supertest": "^2.0.12",
+    "cross-env": "^7.0.3",
     "msw": "^1.2.2",
     "prettier": "^2.8.8",
     "supertest": "^6.3.3"

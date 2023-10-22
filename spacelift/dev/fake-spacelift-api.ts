@@ -16,7 +16,7 @@ export class FakeSpaceliftApi implements SpaceliftApi {
       {
         id: '2',
         name: 'Web Services',
-        description: 'Web servics stack',
+        description: 'Web services stack',
         apiHost: 'https://github.com',
         namespace: 'user',
         repository: 'terraform-web-services',

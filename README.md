@@ -6,12 +6,14 @@ backstage-plugin-spacelift: [![npm version](https://badge.fury.io/js/%40scott-th
 
 backstage-plugin-spacelift-backend: [![npm version](https://badge.fury.io/js/%40scott-the-programmer%2Fbackstage-plugin-spacelift-backend.svg)](https://www.npmjs.com/package/@scott-the-programmer/backstage-plugin-spacelift-backend)
 
-A backstage plugin for spacelift, cobbled together one Sunday afternoon by @scott-the-programmer using ChatGPT
+An unofficial Backstage plugin for [Spacelift](https://spacelift.io) to view statuses of runs and stacks through [Backstage](https://backstage.io)
 
 This repository contains two Backstage plugins for integrating with the Spacelift platform:
 
 - `spacelift`: a plugin that displays a table of all Spacelift stacks and runs
 - `spacelift-backend`: a plugin that provides a simple wrapper for the Spacelift API.
+
+*Disclaimer: I do not work for Spacelift.io. I am simply interested in the tool and want to make a part of it accessible by backstage*
 
 ![Stacks](https://raw.githubusercontent.com/scott-the-programmer/backstage-plugin-spacelift/main/docs/stacks.png)
 
@@ -80,26 +82,10 @@ spacelift:
 ```
 
 ## Contributing
-We appreciate your interest in contributing to our project! To ensure a smooth contribution process, please follow the guidelines below.
 
-Please be patient while waiting for your pull request to be reviewed. We'll do our best to provide feedback as soon as possible.
+Feel free to contribute to this project in any shape or form, whether it's raising issues, feature requests, or even creating PRs yourself. 
 
-Thank you for contributing!
-
-### Getting Started
-Fork the repository to your own GitHub account.
-
-Clone the forked repository to your local machine:
-
-```console
-git clone https://github.com/<your-username>/backstage-plugin-spacelift.git
-```
-
-Add the original repository as a remote called 'upstream':
-
-```console
-git remote add upstream https://github.com/scott-the-programmer/backstage-plugin-spacelift.git
-```
+Any help is appreciated!
 
 ### Install Dependencies
 
@@ -139,28 +125,4 @@ Run the backend tests:
 
 ```console
 make test-backend
-```
-
-Lint the frontend code:
-
-```console
-make lint-frontend
-```
-
-Lint the backend code:
-
-```console
-make lint-backend
-```
-
-Automatically fix linting issues in the frontend code:
-
-```console
-make fix-frontend
-```
-
-Automatically fix linting issues in the backend code:
-
-```console
-make fix-backend
 ```

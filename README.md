@@ -13,7 +13,7 @@ This repository contains two Backstage plugins for integrating with the Spacelif
 - `spacelift`: a plugin that displays a table of all Spacelift stacks and runs
 - `spacelift-backend`: a plugin that provides a simple wrapper for the Spacelift API.
 
-*Disclaimer: I do not work for Spacelift.io. I am simply interested in the tool and want to make a part of it accessible by backstage*
+*Disclaimer: I do not work for Spacelift.io. I am simply interested in the tool and want to make a part of it accessible via backstage*
 
 ![Stacks](https://raw.githubusercontent.com/scott-the-programmer/backstage-plugin-spacelift/main/docs/stacks.png)
 
@@ -114,7 +114,6 @@ Run the backend development server:
 make run-backend
 ```
 
-Testing and Linting
 Run the frontend tests:
 
 ```console

@@ -41,7 +41,7 @@
     "prettier:fix": "prettier --write ."
   },
   "dependencies": {
-    "@backstage/backend-common": "^0.18.5",
+    "@backstage/backend-common": "^0.19.10",
     "@backstage/config": "^1.0.7",
     "@types/express": "*",
     "express": "^4.18.2",

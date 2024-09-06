@@ -19,6 +19,9 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           scope: '@scott-the-programmer'
 
+      - name: Install Yarn
+        run: npm install -g yarn
+
       - name: Checkout
         uses: actions/checkout@v2
 

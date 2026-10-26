@@ -1,5 +1,11 @@
 # Spacelift Backstage Plugins
 
+> **Archived — no longer maintained**
+>
+> I no longer work in an environment that uses Spacelift, so I can't validate these plugins against a live Spacelift setup. This repository is archived and will no longer receive updates or support.
+>
+> You're welcome to fork the repository and continue development. Thanks to everyone who used or contributed to the project!
+
 [![Maintainability](https://api.codeclimate.com/v1/badges/65206b49b30dfc4e2312/maintainability)](https://codeclimate.com/github/scott-the-programmer/backstage-plugin-spacelift/maintainability)
 
 backstage-plugin-spacelift: [![npm version](https://badge.fury.io/js/%40scott-the-programmer%2Fbackstage-plugin-spacelift.svg)](https://www.npmjs.com/package/@scott-the-programmer/backstage-plugin-spacelift)
@@ -83,9 +89,7 @@ spacelift:
 
 ## Contributing
 
-Feel free to contribute to this project in any shape or form, whether it's raising issues, feature requests, or even creating PRs yourself. 
-
-Any help is appreciated!
+To continue development, fork this repository and use the commands below.
 
 ### Install Dependencies
 
